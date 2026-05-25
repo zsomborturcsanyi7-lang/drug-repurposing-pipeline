@@ -152,16 +152,16 @@ pip install -r requirements.txt
 
 ```bash
 # Interactive mode — no programming required
-python hermes_drug.py --interactive
+python src/hermes_drug.py --interactive
 
 # Screen a specific target (e.g., SARS-CoV-2 Mpro)
-python hermes_drug.py --pdb 6LU7 --depth standard
+python src/hermes_drug.py --pdb 6LU7 --depth standard
 
 # Full pipeline with lead optimization
-python hermes_drug.py --pdb 6LU7 --depth deep
+python src/hermes_drug.py --pdb 6LU7 --depth deep
 
 # Replicate our multi-receptor experiment
-python train_multireceptor_v2.py
+python src/train_multireceptor_v2.py
 ```
 
 ### Reproducing Our Results
@@ -170,17 +170,17 @@ To reproduce the Nilotinib_Var_17 discovery:
 
 ```bash
 # 1. Prepare receptors
-python receptor_prep.py --pdb 6LU7
-python receptor_prep.py --pdb 1HPV
-python receptor_prep.py --pdb 1M17
-python receptor_prep.py --pdb 4LVT
-python receptor_prep.py --pdb 5KIR
+python src/receptor_prep.py --pdb 6LU7
+python src/receptor_prep.py --pdb 1HPV
+python src/receptor_prep.py --pdb 1M17
+python src/receptor_prep.py --pdb 4LVT
+python src/receptor_prep.py --pdb 5KIR
 
 # 2. Generate Nilotinib variants
-python optimize_lead.py --smiles "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4C(F)(F)F)n5cc(cn5)C" --name Nilotinib
+python src/optimize_lead.py --smiles "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4C(F)(F)F)n5cc(cn5)C" --name Nilotinib
 
 # 3. Run multi-receptor docking + training
-python train_multireceptor_v2.py
+python src/train_multireceptor_v2.py
 ```
 
 ---
@@ -188,30 +188,33 @@ python train_multireceptor_v2.py
 ## 📁 Repository Structure
 
 ```
-├── hermes_drug.py                 Main orchestrator (CLI + interactive)
-├── receptor_prep.py               PDB fetch, clean, PDBQT conversion
-├── auto_box.py                    Binding pocket auto-detection
-├── screen_ai.py                   AI-accelerated compound screening
-├── optimize_lead.py               Lead optimization (variant generation)
-├── prep_ligands.py                SMILES → 3D PDBQT (cross-platform)
-├── parse_docking_results.py       Vina output parsing + ranking
-├── train_multireceptor_v2.py      Multi-target ML training pipeline
-├── train_advanced_model.py        Advanced ML (ChEMBL data integration)
-├── train_ml_proxy.py              RandomForest affinity predictor
-├── train_boosted_proxy.py         GradientBoosting affinity predictor
-├── cloud_runner.py                Kaggle cloud acceleration
-├── config.yaml                    Universal configuration
-├── vina_1.2.7_win.exe             AutoDock Vina binary
-├── data/                          Compound libraries
-│   ├── full_fda_library.csv       51 FDA-approved drugs with SMILES
-│   ├── mpro_training_data.csv     669 ChEMBL SARS-CoV-2 Mpro bioactivities
-│   ├── training_set_50.csv        50 diverse training compounds
-│   └── nilotinib_variants.csv     50 Nilotinib structural variants
-└── docs/                          Documentation
-    ├── README.md                  This file
-    ├── GEMINI.md                  Original project specification
-    ├── LICENSE                    MIT License
-    └── letter_to_semmelweis.py    Academic collaboration proposal
+├── src/                            Source code
+│   ├── hermes_drug.py              Main orchestrator (CLI + interactive)
+│   ├── receptor_prep.py            PDB fetch, clean, PDBQT conversion
+│   ├── auto_box.py                 Binding pocket auto-detection
+│   ├── screen_ai.py                AI-accelerated compound screening
+│   ├── optimize_lead.py            Lead optimization (variant generation)
+│   ├── prep_ligands.py             SMILES → 3D PDBQT (cross-platform)
+│   ├── parse_docking_results.py    Vina output parsing + ranking
+│   ├── train_multireceptor_v2.py   Multi-target ML training pipeline
+│   ├── train_advanced_model.py     Advanced ML (ChEMBL data integration)
+│   ├── train_ml_proxy.py           RandomForest affinity predictor
+│   ├── train_boosted_proxy.py      GradientBoosting affinity predictor
+│   ├── cloud_runner.py             Kaggle cloud acceleration
+│   └── ...                         Additional utility modules
+├── data/                           Compound libraries
+│   ├── full_fda_library.csv        51 FDA-approved drugs with SMILES
+│   ├── mpro_training_data.csv      669 ChEMBL SARS-CoV-2 Mpro bioactivities
+│   ├── training_set_50.csv         50 diverse training compounds
+│   └── nilotinib_variants.csv      50 Nilotinib structural variants
+├── docs/                           Documentation
+│   ├── README.md                   This file
+│   ├── GEMINI.md                   Original project specification
+│   ├── LICENSE                     MIT License
+│   └── letter_to_semmelweis.py     Academic collaboration proposal
+├── config.yaml                     Universal configuration
+├── requirements.txt                Python dependencies
+└── vina_1.2.7_win.exe              AutoDock Vina (Windows binary)
 ```
 
 ---

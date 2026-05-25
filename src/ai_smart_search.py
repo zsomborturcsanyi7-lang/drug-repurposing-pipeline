@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import logging
 from rdkit import Chem
 from rdkit.Chem import rdFingerprintGenerator, Descriptors

@@ -13,6 +13,8 @@ Usage:
 
 import os
 import sys
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import logging
 import numpy as np
 import pandas as pd

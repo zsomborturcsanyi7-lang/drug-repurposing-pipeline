@@ -8,9 +8,9 @@ kaggle_output/
 kg_v*/
 cloud_results/
 
-# Cache
+# Source code is in src/
+src/__pycache__/
 __pycache__/
-*.pyc
 .ipynb_checkpoints/
 
 # Training artifacts

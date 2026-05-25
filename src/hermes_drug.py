@@ -92,7 +92,7 @@ def step_receptor(pdb_id: str, config: dict):
         return pdbqt_path
     
     # Prepare
-    cmd = [sys.executable, "receptor_prep.py", "--pdb", pdb_id]
+    cmd = [sys.executable, "src/receptor_prep.py", "--pdb", pdb_id]
     result = subprocess.run(cmd, capture_output=True, text=True)
     
     if result.returncode != 0:
