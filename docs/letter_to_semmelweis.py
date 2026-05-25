@@ -49,14 +49,17 @@ oldalon vagy az alábbi elérhetőségen.
 
 Tisztelettel,
 
-Horváth János
+Turcsányi Zsombor & Hermes AI
 E-mail: [email]
 GitHub: https://github.com/horvatjanos
 Projekt: https://github.com/horvatjanos/universal-drug-repurposing
 
 ---
 
-Melléklet: A Nilotinib_Var_17 molekula SMILES kódja és prediktált tulajdonságai
+Mellékletek:
+1. White Paper — részletes kutatási dokumentáció
+   https://github.com/horvatjanos/universal-drug-repurposing/blob/master/docs/WHITE_PAPER.md
+2. A Nilotinib_Var_17 molekula SMILES kódja és prediktált tulajdonságai
 """
 
 print(LEVÉL)
