@@ -111,40 +111,89 @@ User Input (PDB ID / Protein)
 
 ## 📦 Installation
 
+### Prerequisites
+- **Python 3.10+** with pip
+- **OpenBabel** (system package — required for ligand preparation)
+- **Git** (to clone the repo)
+
+### Step-by-Step
+
+**Windows:**
 ```bash
+# 1. Install OpenBabel from: https://github.com/openbabel/openbabel/releases
+#    Download OpenBabel-3.1.1-win64.exe and install to default location
+
+# 2. Clone & install
 git clone https://github.com/horvatjanos/universal-drug-repurposing.git
 cd universal-drug-repurposing
 pip install -r requirements.txt
+
+# 3. Run!
+python hermes_drug.py --interactive
 ```
 
-**Requirements:**
-- Python 3.10+
-- RDKit
-- OpenBabel (system package)
-- AutoDock Vina (included: `vina_1.2.7_win.exe`)
+**Linux / WSL:**
+```bash
+# 1. Install system deps
+sudo apt-get update && sudo apt-get install -y openbabel
+
+# 2. Clone & install
+git clone https://github.com/horvatjanos/universal-drug-repurposing.git
+cd universal-drug-repurposing
+pip install -r requirements.txt
+
+# 3. Run!
+python hermes_drug.py --interactive
+```
+
+**Mac:**
+```bash
+brew install open-babel
+git clone https://github.com/horvatjanos/universal-drug-repurposing.git
+cd universal-drug-repurposing
+pip install -r requirements.txt
+python hermes_drug.py --interactive
+```
+
+### First Run — What Happens
+
+The first time you screen a new protein target, the platform automatically:
+1. Downloads the protein structure from RCSB PDB (internet required)
+2. Prepares the receptor (`targets/<PDB_ID>/` — cached for future use)
+3. Generates 3D ligand structures from SMILES (`ligands/` — generated on-demand)
+4. Runs AutoDock Vina docking (included binary: `vina_1.2.7_win.exe`)
+
+**Everything is auto-generated — no manual setup needed beyond OpenBabel.**
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── hermes_drug.py              Main entry point
+├── hermes_drug.py              Main entry point (interactive + CLI)
+├── receptor_prep.py            Auto-fetch & prepare any PDB structure
+├── auto_box.py                 Auto-detect binding pocket
+├── screen_ai.py                AI screening (fingerprints + ML)
+├── optimize_lead.py            Generate structural variants
+├── prep_ligands.py             SMILES → 3D PDBQT (cross-platform)
+├── parse_docking_results.py    Extract + rank docking affinities
+├── train_multireceptor_v2.py   Multi-target ML training
+├── train_advanced_model.py     Advanced ML pipeline (ChEMBL data)
+├── cloud_runner.py             Kaggle cloud acceleration
 ├── config.yaml                 Universal configuration
-├── receptor_prep.py            PDB fetch & preparation
-├── auto_box.py                 Binding pocket detection
-├── screen_ai.py                AI screening pipeline
-├── optimize_lead.py            Lead optimization
-├── prep_ligands.py             SMILES → PDBQT
-├── parse_docking_results.py    Result parser
-├── train_advanced_model.py     ML training pipeline
-├── cloud_runner.py             Kaggle integration
-├── vina_1.2.7_win.exe          AutoDock Vina binary
-├── vina_affinity_proxy.pkl     Trained ML model
-├── receptor/                   Receptor PDBQT files
-├── ligands/                    Ligand PDBQT files
-├── docking_results/            Docking output logs
-└── targets/                    Cached receptor data
+├── vina_1.2.7_win.exe          AutoDock Vina (Windows binary)
+├── data/                       Drug libraries + training data
+│   ├── full_fda_library.csv    51 FDA-approved drugs (SMILES)
+│   ├── training_set_50.csv     50 training compounds
+│   ├── mpro_training_data.csv  669 ChEMBL Mpro bioactivities
+│   └── nilotinib_variants.csv  50 Nilotinib structural variants
+└── docs/                       Documentation
+    ├── README.md
+    ├── LICENSE (MIT)
+    └── letter_to_semmelweis.py
 ```
+
+All generated files (`targets/`, `ligands/`, `docking_results/`, `*.pkl`) are created automatically at runtime.
 
 ---
 
