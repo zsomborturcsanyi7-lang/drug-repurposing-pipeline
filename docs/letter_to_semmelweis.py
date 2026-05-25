@@ -2,7 +2,7 @@
 """Levél a Semmelweis Egyetem Farmakológiai Intézetének"""
 
 LEVÉL = """
-Tisztelt Intézetvezető Úr/Asszony!
+Tisztelt Bioinformatika Munkacsoport, Tisztelt Kutatók!
 
 Turcsányi Zsombor vagyok, a Neumann János Informatikai Technikum tanulója.
 Engedje meg, hogy bemutassam a projektemet, amelyen az elmúlt hónapokban
@@ -102,8 +102,11 @@ számomra felbecsülhetetlen értékű validációt adna.
 
 ---
 
-Nagyon köszönöm, hogy időt szánt a levelem elolvasására. Őszintén hiszek
-benne, hogy ez a munka több mint egy iskolai projekt — és az Önök
+PS: Láttam, hogy az Intézetükben fut egy "AI-alapú gyógyszerkutatási platform
+kifejlesztése" nevű projekt is — talán a mi munkánk ehhez is kapcsolódhatna,
+vagy kiegészíthetné azt a molekuláris dokkolás oldaláról.
+
+Nagyon köszönöm, hogy időt szántak a levelem elolvasására. Őszintén hiszek
 segítségével valódi tudományos értékké válhat.
 
 Várom megtisztelő válaszukat!
