@@ -1,0 +1,7 @@
+chain: null
+cleaned_pdb: targets\6LU7\receptor_cleaned.pdb
+pdb_id: 6LU7
+pdbqt: targets\6LU7\receptor_cleaned.pdbqt
+prepared: '2026-05-27T15:08:41.996795'
+residues: 309
+status: ready

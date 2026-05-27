@@ -1,0 +1,7 @@
+chain: null
+cleaned_pdb: targets\4LVT\receptor_cleaned.pdb
+pdb_id: 4LVT
+pdbqt: targets\4LVT\receptor_cleaned.pdbqt
+prepared: '2026-05-27T15:08:51.593785'
+residues: 278
+status: ready
