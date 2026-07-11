@@ -1,35 +1,35 @@
-# AI Drug Repurposing — Univerzális Gyógyszer-újrapozicionáló Platform
+# AI Drug Repurposing — Universal Drug Repurposing Platform
 
-**AutoDock Vina + ML alapú gyógyszerkutatási pipeline, amely egyetlen paranccsal képes bármely fehérjét bármely gyógyszerkönyvtárral szemben szűrni.**
+**An AutoDock Vina + ML-based drug discovery pipeline capable of screening any protein against any drug library with a single command.**
 
-## 🧪 Leírás
+## 🧪 Description
 
-Ez a platform egy teljes körű, automatizált gyógyszer-újrapozicionálási (drug repurposing) rendszer, amely a következő lépéseket végzi el:
+This platform is a complete, automated drug repurposing system that performs the following steps:
 
-1. **Receptor előkészítés** — PDB struktúra letöltése és tisztítása
-2. **Auto Box** — Kötőzseb automatikus detektálása
-3. **AI szűrés** — ML proxy gyors előszűrés
-4. **Ligandum előkészítés** — SMILES → 3D konformáció → PDBQT
-5. **Parallel dokkolás** — AutoDock Vina párhuzamos futtatása
-6. **Eredmények kiértékelése** — Rangsorolás és riport generálás
-7. **Lead optimalizálás** — Jobb variánsok generálása (--deep mód)
+1. **Receptor Preparation** — Download and clean PDB structures
+2. **Auto Box** — Automatic binding pocket detection
+3. **AI Screening** — ML proxy-based fast pre-screening
+4. **Ligand Preparation** — SMILES → 3D conformation → PDBQT
+5. **Parallel Docking** — Parallelized AutoDock Vina execution
+6. **Result Evaluation** — Ranking and report generation
+7. **Lead Optimization** — Generate improved variants (--deep mode)
 
-### Eredmények
+### Results
 
-- **Top találat:** Nilotinib — -8.30 kcal/mol kötési energia
-- Célfehérjék: 6LU7 (SARS-CoV-2 fő proteáz), 5KIR, 4LVT, 1M17, 1HPV
-- ADMET szűrés és validálás elvégezve
+- **Top hit:** Nilotinib — -8.30 kcal/mol binding energy
+- Target proteins: 6LU7 (SARS-CoV-2 main protease), 5KIR, 4LVT, 1M17, 1HPV
+- ADMET screening and validation completed
 
-## 📁 Fájlszerkezet
+## 📁 File Structure
 
 ```
 AI Drug Repurposing/
 ├── src/
-│   ├── hermes_drug.py          # Fő belépési pont — univerzális pipeline
-│   ├── pose_stability.py       # Póz stabilitás elemzés
-│   └── admet_prediction.py     # ADMET (felszívódás, toxicitás) predikció
-├── cloud_results/              # Felhőben futtatott dokkolás eredményei
-│   └── 6LU7/                   # SARS-CoV-2 fő proteáz target
+│   ├── hermes_drug.py          # Main entry point — universal pipeline
+│   ├── pose_stability.py       # Pose stability analysis
+│   └── admet_prediction.py     # ADMET (absorption, toxicity) prediction
+├── cloud_results/              # Cloud-run docking results
+│   └── 6LU7/                   # SARS-CoV-2 main protease target
 │       ├── run_parallel_docking.py
 │       ├── parse_docking_results.py
 │       ├── receptor_prep.py
@@ -37,89 +37,92 @@ AI Drug Repurposing/
 │       ├── optimize_lead.py
 │       ├── mutate_lead.py
 │       ├── nilotinib_variants.csv
-│       └── targets/            # Célfehérje struktúrák
+│       └── targets/            # Target protein structures
 │           ├── 6LU7/
 │           ├── 5KIR/
 │           ├── 4LVT/
 │           ├── 1M17/
 │           └── 1HPV/
-├── github_repo/                # Publikus GitHub release anyagok
+├── github_repo/                # Public GitHub release materials
 │   ├── README.md
 │   ├── USAGE.md
 │   ├── WHITEPAPER.md
 │   └── CHANGELOG.md
-├── final_validated_results.csv # Végleges validált eredmények
-├── admet_screened_results.csv  # ADMET szűrt eredmények
-└── merged_results.csv          # Összesített dokkolási eredmények
+├── final_validated_results.csv # Final validated results
+├── admet_screened_results.csv  # ADMET screened results
+└── merged_results.csv          # Aggregated docking results
 ```
 
-## 🚀 Használat
+## 🚀 Usage
 
-### Alap szűrés egy fehérjére
+### Basic screening against a protein
 
 ```bash
 python src/hermes_drug.py --pdb 6LU7
 ```
 
-### Mély mód (lead optimalizálással)
+### Deep mode (with lead optimization)
 
 ```bash
 python src/hermes_drug.py --pdb 6LU7 --deep
 ```
 
-### Felhő mód (távoli szerveren futtatás)
+### Cloud mode (run on remote server)
 
 ```bash
 python src/hermes_drug.py --pdb 6LU7 --cloud
 ```
 
-### Interaktív mód
+### Interactive mode
 
 ```bash
 python src/hermes_drug.py --interactive
 ```
 
-### Egyedi gyógyszerkönyvtár használata
+### Using a custom drug library
 
 ```bash
 python src/hermes_drug.py --pdb 6LU7 --drug-library custom_drugs.csv
 ```
 
-### Elérhető target-ek listázása
+### Listing available targets
 
 ```bash
 python src/hermes_drug.py --list-targets
 ```
 
-## 📦 Függőségek
+## 📦 Dependencies
 
 - **Python 3.8+**
-- **AutoDock Vina** (külső program, PATH-ban kell lennie)
-- **Open Babel** (ligandum konverzióhoz)
-- Python csomagok:
+- **AutoDock Vina** (external program, must be in PATH)
+- **Open Babel** (for ligand conversion)
+- Python packages:
   - `numpy`, `pandas`
   - `scikit-learn` (ML proxy)
   - `pyyaml`
-  - `rdkit` (kémiai szerkezetek kezelése)
-  - `requests` (PDB letöltés)
+  - `rdkit` (chemical structure handling)
+  - `requests` (PDB download)
 
-Telepítés:
+Installation:
 
 ```bash
 pip install numpy pandas scikit-learn pyyaml rdkit requests
-# AutoDock Vina és Open Babel külön telepítendő!
+# AutoDock Vina and Open Babel must be installed separately!
 ```
 
-## 📊 Pipeline áttekintése
+## 📊 Pipeline Overview
 
 ```
-PDB letöltés → Receptor tisztítás → Kötőzseb detektálás
-    → ML proxy gyorsszűrés → Ligandum 3D generálás
-    → Parallel AutoDock Vina dokkolás → Eredmény rangsorolás
-    → (opcionális) Lead mutáció és optimalizálás
-    → ADMET predikció → Végső riport
+PDB download → Receptor cleanup → Binding pocket detection
+    → ML proxy fast screening → Ligand 3D generation
+    → Parallel AutoDock Vina docking → Result ranking
+    → (optional) Lead mutation and optimization
+    → ADMET prediction → Final report
 ```
 
-## ⚠️ Figyelmeztetés
+## ⚠️ Warning
 
-Ez a platform **kutatási célokra** készült. A dokkolási eredmények *in silico* predikciók, melyeket kísérleti validálásnak kell követnie. Ne használd orvosi döntések meghozatalára laboratóriumi megerősítés nélkül.
+This platform is intended for **research purposes**. Docking results are *in silico* predictions that must be followed by experimental validation. Do not use for medical decisions without laboratory confirmation.
+
+## Author
+Zsombi & Hermes Agent (Nous Research)
