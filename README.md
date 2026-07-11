@@ -1,5 +1,8 @@
 # AI Drug Repurposing — Universal Drug Repurposing Platform
 
+**Status:** ⚠️ Prototype — docking pipeline validated, ML proxy trained, needs Kaggle GPU for full run
+
+
 **An AutoDock Vina + ML-based drug discovery pipeline capable of screening any protein against any drug library with a single command.**
 
 ## 🧪 Description
