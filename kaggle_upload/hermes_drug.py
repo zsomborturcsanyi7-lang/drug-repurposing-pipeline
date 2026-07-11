@@ -433,30 +433,7 @@ def run_pipeline(pdb_id: str, depth: str = 'standard',
     # ── Step 6: Results ──
     step_parse_results(pdb_id)
     
-    # ── Step 7: ADMET & Stability (Scientific Validation) ──
-    logger.info("\n" + "=" * 60)
-    logger.info(f"  STEP 7: ADMET & Stability Analysis")
-    logger.info("=" * 60)
-    
-    results_file = "final_3d_docking_insights.csv"
-    if os.path.exists(results_file):
-        # 1. ADMET Screening
-        if os.path.exists("src/admet_prediction.py"):
-            logger.info("  Running ADMET profiling...")
-            cmd = [sys.executable, "src/admet_prediction.py", results_file]
-            subprocess.run(cmd)
-            results_file = "admet_screened_results.csv"
-            
-        # 2. Stability Analysis
-        if os.path.exists("src/pose_stability.py"):
-            logger.info("  Running Pose Stability (MD Proxy) analysis...")
-            cmd = [sys.executable, "src/pose_stability.py", results_file]
-            subprocess.run(cmd)
-            results_file = "final_validated_results.csv"
-            
-        logger.info(f"  Scientific validation complete. Final report: {results_file}")
-    
-    # ── Step 8: Optimize (deep mode only) ──
+    # ── Step 7: Optimize (deep mode only) ──
     if depth == 'deep':
         step_optimize(pdb_id, config)
     

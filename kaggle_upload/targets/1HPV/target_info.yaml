@@ -1,0 +1,7 @@
+chain: null
+cleaned_pdb: targets\1HPV\receptor_cleaned.pdb
+pdb_id: 1HPV
+pdbqt: targets\1HPV\receptor_cleaned.pdbqt
+prepared: '2026-05-27T15:08:44.155303'
+residues: 198
+status: ready

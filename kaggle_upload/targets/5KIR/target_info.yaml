@@ -1,0 +1,7 @@
+chain: null
+cleaned_pdb: targets\5KIR\receptor_cleaned.pdb
+pdb_id: 5KIR
+pdbqt: targets\5KIR\receptor_cleaned.pdbqt
+prepared: '2026-05-27T15:08:57.259776'
+residues: 1102
+status: ready

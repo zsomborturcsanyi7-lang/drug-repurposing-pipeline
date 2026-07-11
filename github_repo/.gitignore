@@ -1,0 +1,44 @@
+# Docking output
+docking_results/
+dock_*.pdbqt
+*.pdbqt
+
+# Kaggle output
+kaggle_output/
+kg_v*/
+cloud_results/
+
+# Source code is in src/
+src/__pycache__/
+__pycache__/
+.ipynb_checkpoints/
+
+# Training artifacts
+vina_affinity_proxy.pkl
+vina_*.pkl
+collected_training_data.csv
+chembl_mpro_ic50.csv
+*_baseline.pkl
+_quick_*.py
+
+# Large binaries (use separate release)
+vina_1.2.7_win.exe
+
+# Generated files
+test_*.pdbqt
+test_*.csv
+multi_docking.csv
+ai_screened_hits.csv
+screening_results.csv
+optimized_variants.csv
+RESULT.txt
+
+# IDE
+.vscode/
+.idea/
+
+# Temp
+*.tmp
+*.log
+new_ligands/
+chembl_ligands/
