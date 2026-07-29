@@ -1,25 +1,20 @@
 # drug-repurposing-pipeline
 
-**Status:** ⚠️ Prototype — docking pipeline validated, ML proxy trained, Kaggle GPU needed for full run
+AutoDock Vina és ML alapon működő gyógyszer-újrahasznosítási pipeline.
 
-Automated drug repurposing pipeline: receptor prep → AutoDock Vina docking → ML evaluation. Nilotinib is the top hit.
+## 📌 A projekt célja
+Ismert molekulák célfehérjék elleni dokkolásának és pontozásának automatizálása.
 
-**Note:** This repo overlaps with `universal-drug-repurposing`. This one contains the specific AutoDock Vina pipeline; the other has the full platform.
+## ⚙️ Technológiai stakk
+- Python, AutoDock Vina, RDKit
 
-## ⚠️ THIS PROJECT IS UNFINISHED — FEEL FREE TO CONTINUE IT ⚠️
+## 🚀 Telepítés és Használat
+```bash
+git clone https://github.com/zsomborturcsanyi7-lang/drug-repurposing-pipeline.git
+cd drug-repurposing-pipeline
+pip install -r requirements.txt
+python main.py
+```
 
-This project was developed by Zsombi & Hermes Agent (Nous Research).
-
----
-
-## Contents
-| File | Description |
-|------|-------------|
-| `src/vina_pipeline.py` | Main docking pipeline |
-| `src/ml_proxy.py` | ML proxy model |
-| `config.yaml` | Configuration |
-| `nilotinib_variants.csv` | Nilotinib results |
-| `final_validated_results.csv` | Validated results |
-
-## Developer
-Zsombi & Hermes Agent (Nous Research)
+## 📊 Status
+⚠️ **In silico pipeline**.
