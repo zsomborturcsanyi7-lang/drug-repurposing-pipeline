@@ -1,14 +1,14 @@
 # drug-repurposing-pipeline
 
-AutoDock Vina és ML alapon működő gyógyszer-újrahasznosítási pipeline.
+AutoDock Vina and ML-assisted drug screening pipeline.
 
-## 📌 A projekt célja
-Ismert molekulák célfehérjék elleni dokkolásának és pontozásának automatizálása.
+## 📌 Overview & Purpose
+Automates docking calculations and scoring routines for known drug compounds against target proteins.
 
-## ⚙️ Technológiai stakk
+## ⚙️ Tech Stack & Architecture
 - Python, AutoDock Vina, RDKit
 
-## 🚀 Telepítés és Használat
+## 🚀 Installation & Quickstart
 ```bash
 git clone https://github.com/zsomborturcsanyi7-lang/drug-repurposing-pipeline.git
 cd drug-repurposing-pipeline
@@ -16,5 +16,5 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## 📊 Status
-⚠️ **In silico pipeline**.
+## 📊 Project Status
+⚠️ **In Silico Pipeline**.
