@@ -1,4 +1,4 @@
-# Drug Repurposing Pipeline — AutoDock Vina + ML drug repurposing
+# drug-repurposing-pipeline
 
 **Status:** ⚠️ Prototype — docking pipeline validated, ML proxy trained, Kaggle GPU needed for full run
 
